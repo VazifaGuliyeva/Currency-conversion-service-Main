@@ -1,10 +1,17 @@
 package com.example.currencyexchangeservice.entity;
 
-import java.math.BigDecimal;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.math.BigDecimal;
+@Entity
 public class CurrencyExchange {
+    @Id
     private Long id;
+    @Column(name="currency_from")
     private String from;
+    @Column(name="currency_to")
     private String to;
     private BigDecimal conversional;
     private  String environment;
@@ -12,11 +19,12 @@ public class CurrencyExchange {
     public CurrencyExchange() {
     }
 
-    public CurrencyExchange(Long id, String from, String to, BigDecimal conversional) {
+    public CurrencyExchange(Long id, String from, String to, BigDecimal conversional,String environment) {
         this.id = id;
         this.from = from;
         this.to = to;
         this.conversional = conversional;
+        this.environment=environment;
     }
 
     public Long getId() {
@@ -66,6 +74,7 @@ public class CurrencyExchange {
                 ", from='" + from + '\'' +
                 ", to='" + to + '\'' +
                 ", conversional=" + conversional +
+                ", environment='" + environment + '\''+
                 '}';
     }
 }
